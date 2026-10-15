@@ -1,0 +1,2 @@
+-e .
+# Extras: pip install '.[dev,heic]' or '.[rembg]' or '.[models]'

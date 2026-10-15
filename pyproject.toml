@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "specimetry"
+version = "0.2.0"
+description = "Local ruler and balance measurements and reviewable grouping of specimen photographs"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2,<3", "scipy>=1.11,<2", "opencv-python-headless>=4.9,<6",
+  "scikit-image>=0.23,<1", "scikit-learn>=1.4,<2", "pillow>=10,<13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+heic = ["pillow-heif>=0.16,<2"]
+rembg = ["rembg[cpu]", "onnxruntime"]
+models = ["torch", "transformers>=5", "accelerate"]
+
+[project.scripts]
+specimetry = "specimetry.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
